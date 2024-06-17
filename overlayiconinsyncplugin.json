@@ -1,0 +1,8 @@
+{
+    "KPlugin": {
+        "Description": "Overlay icons for Insync",
+        "ServiceTypes": [
+            "KOverlayIconPlugin"
+        ]
+    }
+}
