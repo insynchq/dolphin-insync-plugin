@@ -1,4 +1,6 @@
 /*****************************************************************************
+ *   Copyright (C) 2025 by Tomáš Hnyk <tomashnyk@gmail.com>                  *
+ *   Copyright (C) 2025 by Kevin B. Burns                                    *
  *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
@@ -22,29 +24,39 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA              *
  *****************************************************************************/
 
-#ifndef OVERLAYICONINSYNCPLUGIN_H
-#define OVERLAYICONINSYNCPLUGIN_H
+#ifndef INSYNCDOLPHINPLUGINHELPER_H
+#define INSYNCDOLPHINPLUGINHELPER_H
 
-#include <KOverlayIconPlugin>
+#include "insyncdolphinpluginhelper_export.h"
 
-class InsyncDolphinPluginHelper;
+#include <QObject>
+#include <QLocalSocket>
 
-/**
- * @brief Insync implementation for the KOverlayIconPlugin interface.
- */
-class OverlayIconInsyncPlugin : public KOverlayIconPlugin
+class INSYNCDOLPHINPLUGINHELPER_EXPORT InsyncDolphinPluginHelper : public QObject
 {
-    Q_PLUGIN_METADATA(IID "com.insync.overlayiconplugin" FILE "overlayiconinsyncplugin.json")
     Q_OBJECT
 
 private:
-    InsyncDolphinPluginHelper *helper;
+    QString controlSocketPath;
 
 public:
-    QStringList getOverlays(const QUrl &item) override;
+    enum SendCommandMode
+    {
+        WaitForReply,
+        SendCommandOnly
+    };
 
-private:
-    QString getFileStatus(const QString &url) const;
+    enum SendCommandTimeout
+    {
+        ShortTimeout,
+        LongTimeout
+    };
+
+    bool connectWithInsync(const QPointer<QLocalSocket> &socket, SendCommandTimeout timeout = ShortTimeout) const;
+    QVariant sendCommand(const QJsonObject &command,
+                         const QPointer<QLocalSocket> &socket,
+                         SendCommandMode mode = SendCommandOnly,
+                         SendCommandTimeout timeout = ShortTimeout) const;
 };
 
-#endif // OVERLAYICONINSYNCPLUGIN_H
+#endif // INSYNCDOLPHINPLUGINHELPER_H

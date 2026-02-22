@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<g id="SYNCED_SHARED">
+	<circle id="XMLID_38_" fill="#4EB858" cx="32" cy="32" r="31.996"/>
+	<g id="XMLID_21_">
+		<defs>
+			<circle id="XMLID_22_" cx="32" cy="32" r="30.045"/>
+		</defs>
+		<clipPath id="XMLID_45_">
+			<use xlink:href="#XMLID_22_"  overflow="visible"/>
+		</clipPath>
+		<g id="XMLID_30_" clip-path="url(#XMLID_45_)">
+			<circle id="XMLID_37_" fill="#97CE8D" cx="32" cy="22.438" r="5.938"/>
+			<path id="XMLID_36_" fill="#97CE8D" d="M36.875,29.417H27.75c-2.475,0-4.5,2.025-4.5,4.5v30.5c0,2.475,2.025,4.5,4.5,4.5h9.125
+				c2.475,0,4.5-2.025,4.5-4.5v-30.5C41.375,31.442,39.35,29.417,36.875,29.417z"/>
+			<circle id="XMLID_35_" fill="#97CE8D" cx="51.941" cy="22.438" r="5.938"/>
+			<path id="XMLID_33_" fill="#97CE8D" d="M56.816,29.417h-9.125c-2.475,0-4.5,2.025-4.5,4.5v30.5c0,2.475,2.025,4.5,4.5,4.5h9.125
+				c2.475,0,4.5-2.025,4.5-4.5v-30.5C61.316,31.442,59.291,29.417,56.816,29.417z"/>
+			<circle id="XMLID_32_" fill="#97CE8D" cx="12.101" cy="22.438" r="5.938"/>
+			<path id="XMLID_31_" fill="#97CE8D" d="M16.976,29.417H7.851c-2.475,0-4.5,2.025-4.5,4.5v30.5c0,2.475,2.025,4.5,4.5,4.5h9.125
+				c2.475,0,4.5-2.025,4.5-4.5v-30.5C21.476,31.442,19.451,29.417,16.976,29.417z"/>
+		</g>
+	</g>
+	<path id="XMLID_39_" fill="#FFFFFF" stroke="#4EB858" stroke-width="2" stroke-miterlimit="10" d="M49.152,19.14
+		c-2.771-2.771-7.305-2.771-10.076,0L26.593,31.623l-3.695-3.695c-2.771-2.771-7.305-2.771-10.076,0v0
+		c-2.771,2.771-2.771,7.305,0,10.076l8.654,8.654c1.406,1.406,3.265,2.095,5.117,2.074c1.853,0.02,3.712-0.669,5.117-2.074
+		l17.442-17.442C51.923,26.445,51.923,21.911,49.152,19.14z"/>
+</g>
+</svg>

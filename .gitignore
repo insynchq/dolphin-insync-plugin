@@ -1,3 +1,9 @@
+#Build
+CMakeLists.txt.user
+/build*
+.clang-format
+*~
+
 # Compiled Object files
 *.slo
 *.lo

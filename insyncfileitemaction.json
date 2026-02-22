@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "MimeTypes": [
+            "application/octet-stream",
+            "inode/directory"
+        ],
+        "Name": "Insync",
+		"Icon": "insync",
+        "ServiceTypes": [
+            "KFileItemAction/Plugin"
+        ]
+    },
+    "MimeType": "application/octet-stream;inode/directory;"
+}

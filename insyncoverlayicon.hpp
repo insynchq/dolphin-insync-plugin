@@ -1,4 +1,6 @@
 /*****************************************************************************
+ *   Copyright (C) 2025 by Tomáš Hnyk <tomashnyk@gmail.com>                  *
+ *   Copyright (C) 2025 by Kevin B. Burns                                    *
  *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
@@ -22,38 +24,29 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA              *
  *****************************************************************************/
 
-#ifndef FILEITEMACTIONINSYNCPLUGIN_H
-#define FILEITEMACTIONINSYNCPLUGIN_H
+#ifndef INSYNCOVERLAYICON_H
+#define INSYNCOVERLAYICON_H
 
-#include <KIOWidgets/KAbstractFileItemActionPlugin>
-#include <QPointer>
+#include <KOverlayIconPlugin>
 
-class QLocalSocket;
 class InsyncDolphinPluginHelper;
 
 /**
- * @brief Insync implementation for the KAbstractFileItemActionPlugin interface.
+ * @brief Insync implementation for the KOverlayIconPlugin interface.
  */
-class FileItemActionInsyncPlugin : public KAbstractFileItemActionPlugin
+class InsyncOverlayIcon : public KOverlayIconPlugin
 {
+    Q_PLUGIN_METADATA(IID "com.insync.overlayiconplugin" FILE "insyncoverlayicon.json")
     Q_OBJECT
 
 private:
     InsyncDolphinPluginHelper *helper;
-    QPointer<QLocalSocket> controlSocket;
 
 public:
-    FileItemActionInsyncPlugin(QObject *parent, const QVariantList &args);
-    ~FileItemActionInsyncPlugin() override;
-
-    QList<QAction *> actions(const KFileItemListProperties &fileItemInfos,
-                             QWidget *parentWidget) override;
-
-private Q_SLOTS:
-    void handleContextAction(const QJsonObject &action);
+    QStringList getOverlays(const QUrl &item) override;
 
 private:
-    QList<QAction *> getContextMenuActions(const QString &url);
+    QString getFileStatus(const QString &url) const;
 };
 
-#endif // FILEITEMACTIONINSYNCPLUGIN_H
+#endif // INSYNCOVERLAYICON_H
