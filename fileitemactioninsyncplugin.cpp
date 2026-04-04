@@ -1,5 +1,5 @@
 /*****************************************************************************
- *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
+ *   Copyright (C) 2021-2026 by Kurt Ko <kurt@insynchq.com>                  *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
  *   Copyright (C) 2012 by Sergei Stolyarov <sergei@regolit.com>             *
@@ -35,10 +35,9 @@
 #include <QStringBuilder>
 #include <QJsonObject>
 
-K_PLUGIN_FACTORY(InsyncFileItemActionPluginFactory, registerPlugin<FileItemActionInsyncPlugin>();)
-K_EXPORT_PLUGIN(InsyncFileItemActionPluginFactory("fileitemactioninsyncplugin"))
+K_PLUGIN_CLASS_WITH_JSON(FileItemActionInsyncPlugin, "fileitemactioninsyncplugin.json")
 
-FileItemActionInsyncPlugin::FileItemActionInsyncPlugin(QObject *parent, const QVariantList &args) : KAbstractFileItemActionPlugin(parent)
+FileItemActionInsyncPlugin::FileItemActionInsyncPlugin(QObject *parent, const QList<QVariant> &args) : KAbstractFileItemActionPlugin(parent)
 {
     Q_UNUSED(args);
 
@@ -81,8 +80,8 @@ void FileItemActionInsyncPlugin::handleContextAction(const QJsonObject &action)
 QList<QAction *> FileItemActionInsyncPlugin::getContextMenuActions(const QString &url)
 {
     QJsonObject command = QJsonObject();
-    command.insert("command", "CONTEXT-MENU-ITEMS");
-    command.insert("full_path", url);
+    command.insert(QStringLiteral("command"), QStringLiteral("CONTEXT-MENU-ITEMS"));
+    command.insert(QStringLiteral("full_path"), url);
 
     const QVariant reply = helper->sendCommand(command, controlSocket, InsyncDolphinPluginHelper::WaitForReply);
 
@@ -94,7 +93,7 @@ QList<QAction *> FileItemActionInsyncPlugin::getContextMenuActions(const QString
     QList<QVariant> menuitems = menuinfo.at(1).toList();
 
     QPointer<KActionMenu> topContextMenu = new KActionMenu(
-        QIcon::fromTheme("insync"),
+        QIcon::fromTheme(QStringLiteral("insync")),
         title,
         this);
 
@@ -104,7 +103,7 @@ QList<QAction *> FileItemActionInsyncPlugin::getContextMenuActions(const QString
         QString text = commandinfo.at(0).toString();
         QString method = commandinfo.at(1).toString();
 
-        if (text == "separator")
+        if (text == QStringLiteral("separator"))
         {
             topContextMenu->addSeparator();
         }
@@ -113,8 +112,8 @@ QList<QAction *> FileItemActionInsyncPlugin::getContextMenuActions(const QString
             QAction *actionItem = new QAction(text, this);
 
             QJsonObject actionJson = QJsonObject();
-            actionJson.insert("method", method);
-            actionJson.insert("full_path", url);
+            actionJson.insert(QStringLiteral("method"), method);
+            actionJson.insert(QStringLiteral("full_path"), url);
 
             connect(actionItem, &QAction::triggered, [=] {
                 handleContextAction(actionJson);

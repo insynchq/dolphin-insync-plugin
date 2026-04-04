@@ -1,5 +1,5 @@
 /*****************************************************************************
- *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
+ *   Copyright (C) 2021-2026 by Kurt Ko <kurt@insynchq.com>                  *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
  *   Copyright (C) 2012 by Sergei Stolyarov <sergei@regolit.com>             *
