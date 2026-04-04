@@ -1,0 +1,10 @@
+{
+    "KPlugin": {
+        "Description": "Insync context menu actions",
+        "MimeTypes": [
+            "application/octet-stream",
+            "inode/directory"
+        ],
+        "Name": "Insync"
+    }
+}

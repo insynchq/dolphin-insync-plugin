@@ -64,11 +64,11 @@ QVariant InsyncDolphinPluginHelper::sendCommand(const QJsonObject &command,
         // Response wasn't JSON serializable
 
         // Trim quotes
-        if (reply.startsWith("\""))
+        if (reply.startsWith(QLatin1Char('"')))
         {
             reply.remove(0, 1);
         }
-        if (reply.endsWith("\""))
+        if (reply.endsWith(QLatin1Char('"')))
         {
             reply.remove(reply.size() - 1, 1);
         }

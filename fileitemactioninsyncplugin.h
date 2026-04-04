@@ -1,5 +1,5 @@
 /*****************************************************************************
- *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
+ *   Copyright (C) 2021-2026 by Kurt Ko <kurt@insynchq.com>                  *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
  *   Copyright (C) 2012 by Sergei Stolyarov <sergei@regolit.com>             *
@@ -25,7 +25,7 @@
 #ifndef FILEITEMACTIONINSYNCPLUGIN_H
 #define FILEITEMACTIONINSYNCPLUGIN_H
 
-#include <KIOWidgets/KAbstractFileItemActionPlugin>
+#include <KAbstractFileItemActionPlugin>
 #include <QPointer>
 
 class QLocalSocket;
@@ -43,7 +43,7 @@ private:
     QPointer<QLocalSocket> controlSocket;
 
 public:
-    FileItemActionInsyncPlugin(QObject *parent, const QVariantList &args);
+    FileItemActionInsyncPlugin(QObject *parent, const QList<QVariant> &args = {});
     ~FileItemActionInsyncPlugin() override;
 
     QList<QAction *> actions(const KFileItemListProperties &fileItemInfos,

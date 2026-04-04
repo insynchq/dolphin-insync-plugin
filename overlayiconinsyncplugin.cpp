@@ -1,5 +1,5 @@
 /*****************************************************************************
- *   Copyright (C) 2021 by Kurt Ko <kurt@insynchq.com>                       *
+ *   Copyright (C) 2021-2026 by Kurt Ko <kurt@insynchq.com>                  *
  *   Copyright (C) 2014 by Luis Manuel R. Pugoy <lpugoy@insynchq.com>        *
  *   Copyright (C) 2014 by Emmanuel Pescosta <emmanuelpescosta099@gmail.com> *
  *   Copyright (C) 2012 by Sergei Stolyarov <sergei@regolit.com>             *
@@ -43,17 +43,17 @@ QStringList OverlayIconInsyncPlugin::getOverlays(const QUrl &url)
     QString status = getFileStatus(url.toLocalFile());
 
     QStringList overlays;
-    if (status == "SYNCED")
+    if (status == QStringLiteral("SYNCED"))
     {
-        overlays << "emblem-insync-synced";
+        overlays << QStringLiteral("dolphin-emblem-insync-synced");
     }
-    else if (status == "SYNCING")
+    else if (status == QStringLiteral("SYNCING"))
     {
-        overlays << "emblem-insync-syncing";
+        overlays << QStringLiteral("dolphin-emblem-insync-syncing");
     }
-    else if (status == "ERROR")
+    else if (status == QStringLiteral("ERROR"))
     {
-        overlays << "emblem-insync-error";
+        overlays << QStringLiteral("dolphin-emblem-insync-error");
     }
 
     return overlays;
@@ -62,8 +62,8 @@ QStringList OverlayIconInsyncPlugin::getOverlays(const QUrl &url)
 QString OverlayIconInsyncPlugin::getFileStatus(const QString &url) const
 {
     QJsonObject command = QJsonObject();
-    command.insert("command", "GET-FILE-STATUS");
-    command.insert("full_path", QFileInfo(url).canonicalFilePath());
+    command.insert(QStringLiteral("command"), QStringLiteral("GET-FILE-STATUS"));
+    command.insert(QStringLiteral("full_path"), QFileInfo(url).canonicalFilePath());
 
     QPointer<QLocalSocket> itemStateSocket = new QLocalSocket;
     const QVariant reply = helper->sendCommand(command, itemStateSocket, InsyncDolphinPluginHelper::WaitForReply);
